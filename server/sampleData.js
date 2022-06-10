@@ -3,41 +3,41 @@ const projects = [
     {
       id: '1',
       clientId: '1',
-      name: 'eCommerce Website',
+      name: 'React patterns',
       description:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
+        'Contents Translations Element Component Expressions Props defaultProps Destructuring props JSX spread attributes Merge destructured props with other values Conditional rendering Children types',
       status: 'In Progress',
     },
     {
       id: '2',
       clientId: '2',
-      name: 'Dating App',
+      name: 'Go To Statement Considered Harmful',
       description:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
+        'I discovered why the use of the go to statement has such disastrous effects, and I became convinced that the go to statement should be abolished from all "higher level" programming language',
       status: 'In Progress',
     },
     {
       id: '3',
       clientId: '3',
-      name: 'SEO Project',
+      name: 'Canonical string reduction',
       description:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
+        'This note addresses the problem of how to characterize an intermediate machine state during the evaluation of a SASL expression.',
       status: 'In Progress',
     },
     {
       id: '4',
       clientId: '4',
-      name: 'Design Prototype',
+      name: 'First class tests',
       description:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
+        'http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll',
       status: 'Done',
     },
     {
       id: '5',
       clientId: '5',
-      name: 'Auction Website',
+      name: 'TDD harms architecture',
       description:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.',
+        'TDD Harms Architecture',
       status: 'In Progress',
     },
   ];
@@ -46,33 +46,33 @@ const projects = [
   const clients = [
     {
       id: '1',
-      name: 'Tony Stark',
-      email: 'ironman@gmail.com',
-      phone: '343-567-4333',
+      name: 'Michael Chan',
+      email: 'MichaelChan@reactpatterns.com',
+      phone: '111-222-3333',
     },
     {
       id: '2',
-      name: 'Natasha Romanova',
-      email: 'blackwidow@gmail.com',
-      phone: '223-567-3322',
+      name: 'Edsger W. Dijkstra',
+      email: 'Edsger@arizona.com',
+      phone: '222-333-4444',
     },
     {
       id: '3',
-      name: 'Thor Odinson',
-      email: 'thor@gmail.com',
-      phone: '324-331-4333',
+      name: 'Edsger W. Dijkstra',
+      email: 'Dijkstra@utexas.com',
+      phone: '333-444-5555',
     },
     {
       id: '4',
-      name: 'Steve Rogers',
-      email: 'steve@gmail.com',
-      phone: '344-562-6787',
+      name: 'Robert C. Martin',
+      email: 'RobertMartin@cleancoder.com',
+      phone: '444-555-6666',
     },
     {
       id: '5',
-      name: 'Bruce Banner',
-      email: 'bruce@gmail.com',
-      phone: '321-468-8887',
+      name: 'Robert C. Martin',
+      email: 'RobertC@cleancoder.com',
+      phone: '555-666-7777',
     },
   ];
   
