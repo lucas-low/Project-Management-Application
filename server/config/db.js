@@ -1,5 +1,11 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const connectDB = async () => {}
+const connectDB = async () => {
+    const conn = await mongoose.connect(process.env.MONGO_URI)
+    
+    console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline.bold);
+}
 
-const password = process.argv[2]
+module.exports = connectDB
+
+//const password = process.argv[2]
