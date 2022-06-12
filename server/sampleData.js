@@ -1,4 +1,4 @@
-// Projects
+//sample data for localhost Projects
 const projects = [
     {
       id: '1',
