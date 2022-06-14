@@ -2,41 +2,56 @@ import { useState } from "react"
 import { FaList } from "react-icons/fa"
 import { useMutation, useQuery } from "@apollo/client"
 import { ADD_PROJECT } from "../mutations/projectMutations"
-import { GET_PROJECT } from "../queries/projectQueries"
+import { GET_PROJECTS } from "../queries/projectQueries"
+import {  GET_CLIENTS } from "../queries/clientQueries"
 
-export default function AddProjectModal() {
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [id, setClientId] = useState("");
-    const [status, setStatus] = useState("new");
+export default function AddClientModal() {
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [clientId, setClientId] = useState('');
+    const [status, setStatus] = useState('new');
 
-    const [addProject] = useMutation(ADD_CLIENT, {
-        variables: { name, email, phone },
+    //projects query
+    const [addProject] = useMutation(ADD_PROJECT, {
+        variables: { name, description, clientId, status },
         update(cache, { data: { addProject } }) {
-            const { clients } = cache.readQuery({ query: GET_CLIENTS })
+            const { projects } = cache.readQuery({ query: GET_PROJECTS })
             cache.writeQuery({
-                query: GET_CLIENTS,
-                data: { clients: [...clients, addProject] }
+                query: GET_PROJECTS,
+                data: { projects: projects.concat([addProject]) }
         })}
     });
-    
+    //client query for selections
+    const {loading, error, data} = useQuery(GET_CLIENTS);
+
     const onSubmit = (e) => {
         e.preventDefault();
-        if(name === "" || email === "" || phone === "") {
+
+        if(name === "" || description === "" || status === "") {
             return alert("Please fill in all fields")}
-        addProject(name, email, phone);
-        setName("");
-        setEmail("");
-        setPhone("");
+
+        addProject(name, description, clientId, status);
+        
+        setName('');
+        setDescription('');
+        setStatus('new');
+        setClientId('');
+        
     }
+    if (loading) return null; 
+    if (error) return <p>error something just went wrong...</p>
+
   return (
     <>
-<button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProjectModal">
-  <div className="d-flex align-items-center">
-    <FaList className="icon"/>
-    <div>Add New Project</div>
-  </div>
-
+    {!loading && !error && (
+      <>
+<button type="button" className="btn btn-primary" 
+  data-bs-toggle="modal" 
+    data-bs-target="#addProjectModal">
+    <div className="d-flex align-items-center">
+        <FaList className="icon"/>
+        <div>Add New Project</div>
+    </div>
 </button>
 
 <div className="modal fade" id="addProjectModal" aria-labelledby="addProjectModalLabel" aria-hidden="true">
@@ -62,7 +77,7 @@ export default function AddProjectModal() {
             </div>
             <div className="mb-3">
                 <label className="form-label">Status</label>
-                <select id="status" className="form-control" 
+                <select id="status" className="form-select" 
                 value={status} onChange={ (e) => setStatus(e.target.value) 
                 }>
                     <option value="new">New not yet begun</option>
@@ -70,12 +85,27 @@ export default function AddProjectModal() {
                     <option value="completed">Completed</option>
                 </select>
             </div>
+
+            <div className="mb-3">
+                <label className="form-label">Client</label>
+                <select id="clientId" className="form-select"
+                value={clientId} onChange={ (e) => setClientId(e.target.value)
+                }>
+                <option value="">Select Client</option>
+                {data.clients.map((client) => (
+                    <option key={client.id} value={client.id}>{client.name}</option>
+                ))}
+                </select> 
+            </div>
+            
             <button type="submit" data-bs-dismiss="modal" className="btn btn-secondary">Submit</button>
         </form>
       </div>
     </div>
   </div>
 </div>
+      </>
+    )}
     </>
   )
 }
