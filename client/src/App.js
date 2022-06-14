@@ -1,21 +1,44 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+import Clients from "./components/Clients";
+import AddClientModal from "./components/AddClientModal";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+const cache = new InMemoryCache({
+  typePolicies: {//this is to make sure that the cache is always up to date with the data in the database
+    Query: {
+      fields: {
+        clients: {
+          merge(existing, incoming) {
+            return incoming;
+          }
+        },
+        projects: { 
+          merge(existing, incoming) { 
+            return incoming;
+          }
+        }
+      }
+    }
   }
+});
+
+const client = new ApolloClient({ 
+  cache: new InMemoryCache(),
+  uri: 'http://localhost:5000/graphql',
+});
+
+function App() {
+  return (
+    <>
+      <ApolloProvider client={client}>
+        <Header />
+          <div className='container'>
+          <AddClientModal />
+           <Clients />
+          </div> 
+    </ApolloProvider>
+    </>
+  );
 }
 
 export default App;
