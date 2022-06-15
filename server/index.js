@@ -26,7 +26,9 @@ app.use(express.static('public'))
 
 // serve the react app in production mode
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html')) })
+    res.sendFile(path.resolve(__dirname, '../public', 'index.html')) })
+
+    
 
 const port = process.env.PORT || 5000
 
