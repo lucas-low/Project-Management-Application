@@ -14,7 +14,7 @@ app.use(cors());
 // connect to the database
 connectDB()
 
-// use graphql-playground in development mode
+// use graphql-playground
 app.use(
     '/graphql',
     graphqlHTTP({
