@@ -12,8 +12,6 @@ export default function Header() {
           </div>
         </a>
       </div>
-
-
     </nav>
   )
 }
