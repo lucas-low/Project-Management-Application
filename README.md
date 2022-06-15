@@ -1,5 +1,6 @@
-# // Project Management Application
-[Live App] (https://intense-chamber-36264.herokuapp.com/)
+# Project Management Application
+
+- [Live App](https://intense-chamber-36264.herokuapp.com)
 
 - Using MERNG tech stack aka MongoDB, Express, React, Nodejs, GraphQL and a Apollo with Apollo/GraphQL Client to build an intuitive project management application that scales. 
 
